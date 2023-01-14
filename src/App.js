@@ -1,4 +1,5 @@
 import React from "react";
+import EmailList from "./components/EmailList";
 import Header from "./components/Header";
 import SideBar from "./components/SideBar";
 
@@ -8,6 +9,7 @@ function App() {
       <Header />
       <div className="app_body">
         <SideBar />
+        <EmailList/>
       </div>
     </div>
   );

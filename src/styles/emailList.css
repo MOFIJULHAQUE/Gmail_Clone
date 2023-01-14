@@ -1,0 +1,118 @@
+.emailList {
+  display: flex;
+  flex-direction: column;
+}
+
+/* +++++++++++++++++++++++++++ */
+.emailList_settings {
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  justify-content: space-between;
+  border-bottom: 1px solid whitesmoke;
+}
+.emailList_settings svg {
+  font-size: 20px;
+}
+.emailList_settings_Right {
+  display: flex;
+  align-items: center;
+}
+.emailList_settings_Right p {
+  font-size: 10px;
+}
+
+/* ++++++++++++++++++++++++++ */
+.emailType {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid whitesmoke;
+}
+.emailType > .emailType_options {
+  display: flex;
+  align-items: center;
+  min-width: 230px;
+  padding: 0px 10px;
+  cursor: pointer;
+  border-bottom: 3px solid white;
+}
+.emailType > .emailType_options svg {
+  font-size: 20px;
+  color: gray;
+  margin-right: 0.7rem;
+}
+.emailType > .emailType_options p {
+  font-size: 15px;
+}
+.emailType > .emailType_options:hover {
+  background-color: whitesmoke;
+}
+.emailType_options:nth-child(1) {
+  border-bottom: 3px solid rgb(116, 116, 244) !important;
+}
+.emailType_options:nth-child(1) p,
+.emailType_options:nth-child(1) svg {
+  color: rgb(90, 90, 227) !important;
+}
+
+.emailType_options:nth-child(2):hover {
+  border-bottom: 3px solid rgb(49, 173, 33) !important;
+}
+.emailType_options:nth-child(3):hover {
+  border-bottom: 3px solid rgb(33, 173, 152) !important;
+}
+
+/* +++++++++++++++ */
+.emailBody {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid whitesmoke;
+  padding: 0px 10px;
+  height: 40px;
+}
+.emailBody:hover {
+  box-shadow: 2px 4px 4px whitesmoke;
+}
+
+.emailBody .emailBody_left {
+  display: flex;
+  align-items: center;
+  min-width: 300px;
+  flex: 20%;
+}
+.emailBody .emailBody_left svg {
+  font-size: 20px;
+  color: gray;
+  margin-right: 0.7rem;
+}
+.emailBody .emailBody_left h4 {
+  font-size: 14px;
+}
+
+.emailBody .emailBody_middle {
+  display: flex;
+  align-items: center;
+  flex: 90%;
+}
+.emailBody .emailBody_middle p {
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 800px;
+}
+.emailBody_middle .emailBody_middle_msg {
+  display: flex;
+  /* align-items: center; */
+  width: 90%;
+}
+.emailBody .emailBody_right {
+  display: flex;
+  align-items: center;
+  flex: 10%;
+  justify-content: flex-end;
+}
+.emailBody .emailBody_right p {
+  font-size: 11px;
+}
