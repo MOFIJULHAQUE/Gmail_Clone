@@ -17,7 +17,7 @@ const EmailBody = ({ name, subject, message, time }) => {
         <div className="emailBody_middle">
           <div className="emailBody_middle_msg">
             <p>
-              <b>{subject}</b>
+              <b>{subject} </b> - 
               {message}
             </p>
           </div>

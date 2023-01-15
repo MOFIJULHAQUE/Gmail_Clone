@@ -1,4 +1,5 @@
 import React from "react";
+import Compose from "./components/Compose";
 import EmailList from "./components/EmailList";
 import Header from "./components/Header";
 import SideBar from "./components/SideBar";
@@ -11,6 +12,7 @@ function App() {
         <SideBar />
         <EmailList/>
       </div>
+      <Compose/>
     </div>
   );
 }
