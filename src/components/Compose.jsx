@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import RemoveIcon from "@mui/icons-material/Remove";
 import OpenInFullIcon from "@mui/icons-material/OpenInFull";
@@ -16,8 +16,32 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 
 import "../styles/compose.css";
+import { useDispatch } from "react-redux";
+import { closeSendMessage } from "../features/mailSlice";
+// import { db } from "../firebaseComponent";
 
 const Compose = () => {
+  const [to, setTo] = useState("");
+  const [subject, setSubject] = useState("");
+  const [message, setMessage] = useState("");
+
+  console.log(to, subject, message);
+  const dispatch = useDispatch();
+
+  const formSubmit = (e) => {
+    e.preventDefault();
+
+    if (to === "") {
+      alert("Email destinition is required");
+    }
+    if (subject === "") {
+      alert("Subject is required");
+    }
+    if (message === "") {
+      alert("Message is required");
+    }
+  };
+
   return (
     <>
       <div className="compose">
@@ -28,38 +52,51 @@ const Compose = () => {
           <div className="compose__header_right">
             <RemoveIcon />
             <OpenInFullIcon />
-            <CloseIcon />
+            <CloseIcon onClick={() => dispatch(closeSendMessage())} />
           </div>
         </div>
-
-        <div className="compose__body">
-          <div className="compose__body__form">
-            <input type="email" placeholder="To" />
-            <input type="text" placeholder="Subject" />
-            <textarea rows="20"></textarea>
+        <form onSubmit={formSubmit}>
+          <div className="compose__body">
+            <div className="compose__body__form">
+              <input
+                type="email"
+                placeholder="To"
+                value={to}
+                onChange={(e) => setTo(e.target.value)}
+              />
+              <input
+                type="text"
+                placeholder="Subject"
+                value={subject}
+                onChange={(e) => setSubject(e.target.value)}
+              />
+              <textarea rows="20" onChange={(e) => setMessage(e.target.value)}>
+                {message}
+              </textarea>
+            </div>
           </div>
-        </div>
 
-        <div className="compose__footer">
-          <div className="compose__footer_Left">
-            <button type="submit">
-              Send <ArrowDropDownIcon />
-            </button>
-          </div>
+          <div className="compose__footer">
+            <div className="compose__footer_Left">
+              <button type="submit">
+                Send <ArrowDropDownIcon />
+              </button>
+            </div>
 
-          <div className="compose__footer_Right">
-            <FormatColorTextIcon />
-            <AttachFileIcon />
-            <LinkIcon />
-            <InsertEmoticonIcon />
-            <NoteAddIcon />
-            <PhotoIcon />
-            <LockPersonIcon />
-            <CreateIcon />
-            <MoreVertIcon />
-            <DeleteOutlineIcon />
+            <div className="compose__footer_Right">
+              <FormatColorTextIcon />
+              <AttachFileIcon />
+              <LinkIcon />
+              <InsertEmoticonIcon />
+              <NoteAddIcon />
+              <PhotoIcon />
+              <LockPersonIcon />
+              <CreateIcon />
+              <MoreVertIcon />
+              <DeleteOutlineIcon />
+            </div>
           </div>
-        </div>
+        </form>
       </div>
     </>
   );

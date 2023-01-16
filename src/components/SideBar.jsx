@@ -21,12 +21,24 @@ import KeyboardIcon from "@mui/icons-material/Keyboard";
 
 import "../styles/sidebar.css";
 import SidebarOptionss from "./SidebarOptionss";
+import { useDispatch } from "react-redux";
+import {openSendMessage} from "../features/mailSlice"
+
+
+
+
 
 const SideBar = () => {
+
+
+const dispatch = useDispatch()
+
+
+
   return (
     <>
       <div className="sidebar">
-        <Button startIcon={<EditIcon />} className="compose_btn">
+        <Button startIcon={<EditIcon />} className="compose_btn"  onClick={()=>dispatch(openSendMessage())}  >
           Compose
         </Button>
         <SidebarOptionss
