@@ -18,7 +18,15 @@ import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import "../styles/compose.css";
 import { useDispatch } from "react-redux";
 import { closeSendMessage } from "../features/mailSlice";
-// import { db } from "../firebaseComponent";
+
+
+// // import { addDoc, collection } from "firebase/firestore";
+import { toast } from "react-hot-toast";
+import firebase from 'firebase/compat/app';
+
+import db from "../firebase";
+
+
 
 const Compose = () => {
   const [to, setTo] = useState("");
@@ -30,16 +38,34 @@ const Compose = () => {
 
   const formSubmit = (e) => {
     e.preventDefault();
-
     if (to === "") {
-      alert("Email destinition is required");
+      alert("Please enter receiver's email!")
+
     }
     if (subject === "") {
-      alert("Subject is required");
+      alert("Please enter your subject!")
+
     }
     if (message === "") {
-      alert("Message is required");
+      alert("Please enter your message!")
     }
+
+    db.collection("emails").add({
+      to,
+      subject,
+      message,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp()
+
+    })
+
+    setTo("");
+    setSubject("");
+    setMessage("");
+
+    alert("Mail sent")
+    dispatch(closeSendMessage())
+
+
   };
 
   return (
@@ -55,6 +81,7 @@ const Compose = () => {
             <CloseIcon onClick={() => dispatch(closeSendMessage())} />
           </div>
         </div>
+
         <form onSubmit={formSubmit}>
           <div className="compose__body">
             <div className="compose__body__form">

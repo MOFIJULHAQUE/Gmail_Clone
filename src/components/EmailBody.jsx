@@ -1,13 +1,36 @@
 import React from "react";
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
+import { useNavigate } from "react-router-dom"
+import { useDispatch } from "react-redux"
+
 
 import "../styles/emailList.css";
 
+// store's state
+import { openMessage } from "../features/mailSlice";
+
 const EmailBody = ({ name, subject, message, time }) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+
+
+  const setMail = () => {
+    dispatch(openMessage({
+      name,
+      subject,
+      message,
+      time,
+    }))
+    navigate("./mail")
+
+  }
+
+
   return (
     <>
-      <div className="emailBody">
+      <div className="emailBody" onClick={setMail} style={{ cursor: "pointer" }} >
         <div className="emailBody_left">
           <CheckBoxOutlineBlankIcon />
           <StarBorderIcon />
@@ -17,7 +40,7 @@ const EmailBody = ({ name, subject, message, time }) => {
         <div className="emailBody_middle">
           <div className="emailBody_middle_msg">
             <p>
-              <b>{subject} </b> - 
+              <b>{subject} </b> -
               {message}
             </p>
           </div>

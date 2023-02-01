@@ -1,22 +1,40 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import db from "../firebase";
 import "../styles/emailList.css";
 import EmailBody from "./EmailBody";
 import EmailListSettings from "./EmailListSettings";
 import EmailType from "./EmailType";
 const EmailList = () => {
+  const [email, setEmail] = useState([]);
+
+  useEffect(() => {
+    db.collection("emails").orderBy("timestamp", "desc").onSnapshot(snapshot => {
+      setEmail(snapshot.docs.map(doc => ({
+        id: doc.id,
+        data: doc.data()
+      })))
+    })
+  }, [])
   return (
     <>
       <div className="emailList">
         <EmailListSettings />
         <EmailType />
-        <EmailBody
-          name={"Mofijul Haque"}
-          subject={"This is a subject"}
-          message={
-            "This is message,This is message,This is message,This is message,This is message,This is message,This is message,This is message,This is message,This is message,This is message,This is message,is is message,This is message,This is message,This is message,This is message,This is message,"
-          }
-          time={"01:47 PM"}
-        />
+
+        {
+          email.map(({ id, data }) => {
+            return <EmailBody
+              key={id}
+              name={data.to}
+              subject={data.subject}
+              message={
+                data.message
+              }
+              time={new Date(data.timestamp?.seconds * 1000).toLocaleTimeString()}
+            />
+          })
+        }
+
       </div>
     </>
   );
