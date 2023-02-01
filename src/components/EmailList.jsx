@@ -25,7 +25,8 @@ const EmailList = () => {
           email.map(({ id, data }) => {
             return <EmailBody
               key={id}
-              name={data.to}
+              name={data.fromName}
+              email={data.from}
               subject={data.subject}
               message={
                 data.message

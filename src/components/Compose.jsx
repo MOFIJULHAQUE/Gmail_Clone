@@ -16,15 +16,15 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 
 import "../styles/compose.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { closeSendMessage } from "../features/mailSlice";
 
 
 // // import { addDoc, collection } from "firebase/firestore";
-import { toast } from "react-hot-toast";
 import firebase from 'firebase/compat/app';
 
 import db from "../firebase";
+import { selectUser } from "../features/userSlice";
 
 
 
@@ -35,6 +35,7 @@ const Compose = () => {
 
   console.log(to, subject, message);
   const dispatch = useDispatch();
+  const user = useSelector(selectUser)
 
   const formSubmit = (e) => {
     e.preventDefault();
@@ -54,6 +55,8 @@ const Compose = () => {
       to,
       subject,
       message,
+      from:user.email,
+      fromName : user.displayName,
       timestamp: firebase.firestore.FieldValue.serverTimestamp()
 
     })

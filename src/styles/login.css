@@ -1,0 +1,39 @@
+.login__wrapper {
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+
+
+}
+
+.logo__img {
+    border: 10px solid black;
+    border-radius: 20px;
+    background-color: whitesmoke;
+    padding: 100px;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+}
+
+.login__wrapper img {
+    width: 250px;
+    margin-bottom: 50px;
+
+}
+
+.gmail__login {
+    background-color: blue;
+    border-radius: 50px;
+    border: 0;
+    padding: 15px 30px;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 15px;
+    outline: 0;
+    cursor: pointer;
+}

@@ -10,7 +10,7 @@ import "../styles/emailList.css";
 // store's state
 import { openMessage } from "../features/mailSlice";
 
-const EmailBody = ({ name, subject, message, time }) => {
+const EmailBody = ({ name,email, subject, message, time }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -19,6 +19,7 @@ const EmailBody = ({ name, subject, message, time }) => {
   const setMail = () => {
     dispatch(openMessage({
       name,
+      email,
       subject,
       message,
       time,

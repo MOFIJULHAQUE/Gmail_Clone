@@ -112,8 +112,8 @@ const EmailDetail = () => {
               <Avatar />
 
             </IconButton>
-            <h4>{mail.subject}</h4>
-            <p>- {mail.name}</p>
+            <h4>{mail.name}</h4>
+            <p>- {mail.email}</p>
           </div>
 
           <div className="emaildetails__middle--header--right">
@@ -139,8 +139,7 @@ const EmailDetail = () => {
 
 
         <div className="emaildetail__body">
-          <p>{mail.message
-          }</p>
+          <p>{mail.message}</p>
         </div>
 
 

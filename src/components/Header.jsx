@@ -9,8 +9,14 @@ import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import AppsIcon from "@mui/icons-material/Apps";
 
 import "../styles/Header.css";
+import { useSelector } from "react-redux";
+import { selectUser } from "../features/userSlice";
 
 const Header = () => {
+
+  //for avatar photo changing
+  const user = useSelector(selectUser)
+
   return (
     <>
       <div className="header">
@@ -55,7 +61,7 @@ const Header = () => {
 
           <Avatar>
             <img
-              src="https://play-lh.googleusercontent.com/i1qvljmS0nE43vtDhNKeGYtNlujcFxq72WAsyD2htUHOac57Z9Oiew0FrpGKlEehOvo=w240-h480-rw"
+              src={user?.photoURL}
               alt=""
               height="30px"
             />
