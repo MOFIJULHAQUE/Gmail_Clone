@@ -12,10 +12,22 @@ import "../styles/Header.css";
 import { useSelector } from "react-redux";
 import { selectUser } from "../features/userSlice";
 
+
+
+
+// for logout
+
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
+
+
 const Header = () => {
 
   //for avatar photo changing
-  const user = useSelector(selectUser)
+  const user = useSelector(selectUser);
+
+
 
   return (
     <>
@@ -58,11 +70,13 @@ const Header = () => {
           <IconButton>
             <AppsIcon />
           </IconButton>
-
-          <Avatar>
+          <Avatar
+            onClick={() => firebase.auth().signOut()}
+            style={{cursor:"pointer"}}
+          >
             <img
               src={user?.photoURL}
-              alt=""
+              alt="logo"
               height="30px"
             />
           </Avatar>

@@ -18,7 +18,6 @@ export const userSlice = createSlice({
 
 export const { signIn, signOut } = userSlice.actions;
 
-// export const selectSendMessageIsOpen = (state) => state.user.sendMessageIsOpen;
 
 export const selectUser = (state) => state.user.value;
 

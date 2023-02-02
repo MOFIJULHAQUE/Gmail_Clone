@@ -14,7 +14,7 @@ const Login = () => {
     const login = () => {
 
         auth.signInWithPopup(provider).then(({ user }) => {
-             dispatch(signIn({
+            dispatch(signIn({
                 displayName: user.displayName,
                 photoURL: user.photoURL,
                 email: user.email

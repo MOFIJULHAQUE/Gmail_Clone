@@ -29,11 +29,11 @@ function App() {
           email: user.email
         }))
 
-      }else{
-        dispatch(signOut);
+      } else {
+        dispatch(signOut());
       }
     })
-  })
+  }, [])
 
   return (
 
